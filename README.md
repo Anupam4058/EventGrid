@@ -46,7 +46,7 @@ EventGrid/
 │   ├── database/        # Database connection
 │   ├── app.js           # Express app configuration
 │   ├── server.js        # Server entry point
-│   └── package.json
+|
 │
 ├── Frontend/
 │   ├── src/
@@ -61,6 +61,7 @@ EventGrid/
 │   └── package.json
 │
 └── README.md
+└── package.json
 ```
 
 ## Installation & Setup
