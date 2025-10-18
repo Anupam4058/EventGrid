@@ -62,7 +62,7 @@ function App() {
       await deleteEvent(confirmDialog.eventId);
       showToast('Event deleted successfully', 'success');
       setConfirmDialog({ isOpen: false, eventId: null });
-    } catch (error) {
+    } catch {
       showToast('Failed to delete event', 'error');
     }
   };
@@ -88,11 +88,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar
-        onCreateEvent={handleCreateEvent}
-        onOpenProfileManager={() => setIsProfileManagerOpen(true)}
-      />
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-indigo-200">
+      <Navbar onOpenProfileManager={() => setIsProfileManagerOpen(true)} />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {!selectedProfile ? (
@@ -114,13 +111,25 @@ function App() {
           </div>
         ) : (
           <div>
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                Events for {selectedProfile.name}
-              </h2>
-              <p className="text-gray-600">
-                Viewing in timezone: {selectedProfile.timezone}
-              </p>
+            {/* Page header with primary action (desktop/tablet) */}
+            <div className="mb-6 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  Events for {selectedProfile.name}
+                </h2>
+                <p className="text-gray-600">
+                  Viewing in timezone: {selectedProfile.timezone}
+                </p>
+              </div>
+              <div className="hidden sm:flex">
+                <button
+                  onClick={handleCreateEvent}
+                  className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl hover:from-primary-700 hover:to-primary-800 shadow-lg hover:shadow-xl hover:shadow-primary-500/50 transition-all duration-300 font-medium"
+                >
+                  {/* plus icon via CSS pseudo or keep text for clarity */}
+                  Create Event
+                </button>
+              </div>
             </div>
 
             <EventList
@@ -134,6 +143,18 @@ function App() {
           </div>
         )}
       </main>
+
+      {/* Mobile floating action button for creating events */}
+      {selectedProfile && (
+        <button
+          onClick={handleCreateEvent}
+          className="sm:hidden fixed bottom-5 right-5 h-12 w-12 rounded-full bg-primary-600 text-white shadow-xl grid place-items-center hover:bg-primary-700 active:scale-95 transition"
+          aria-label="Create Event"
+          title="Create Event"
+        >
+          <span className="text-2xl leading-none">+</span>
+        </button>
+      )}
 
       {/* Modals */}
       <ProfileManager

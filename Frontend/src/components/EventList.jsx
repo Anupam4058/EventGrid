@@ -56,7 +56,7 @@ const EventList = ({ events, timezone, onEdit, onDelete, onViewDetails, loading 
     return (
         <div className="space-y-4">
             {/* Search and Sort Controls */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 p-3 rounded-lg bg-white border border-primary-100">
                 <div className="flex-1 relative">
                     <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                     <input
@@ -94,14 +94,14 @@ const EventList = ({ events, timezone, onEdit, onDelete, onViewDetails, loading 
                     {Object.entries(groupedEvents).map(([date, dateEvents]) => (
                         <div key={date}>
                             <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                                <span className="text-primary-600">
+                                <span className="text-primary-700">
                                     {formatInTimezone(dateEvents[0].startTime, timezone, 'dddd, MMMM DD, YYYY')}
                                 </span>
                                 <span className="text-sm font-normal text-gray-500">
                                     ({dateEvents.length} {dateEvents.length === 1 ? 'event' : 'events'})
                                 </span>
                             </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
                                 {dateEvents.map(event => (
                                     <EventCard
                                         key={event._id}

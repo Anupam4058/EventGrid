@@ -25,7 +25,7 @@ const ProfileManager = ({ isOpen, onClose }) => {
             setNewProfileName('');
             setNewProfileTimezone('UTC');
             setMessage({ type: 'success', text: 'Profile created successfully!' });
-        } catch (err) {
+        } catch {
             setMessage({ type: 'error', text: error || 'Failed to create profile' });
         }
     };
@@ -38,16 +38,16 @@ const ProfileManager = ({ isOpen, onClose }) => {
             await updateProfileTimezone(profileId, timezone);
             setEditingTimezone(null);
             setMessage({ type: 'success', text: 'Timezone updated successfully!' });
-        } catch (err) {
+        } catch {
             setMessage({ type: 'error', text: error || 'Failed to update timezone' });
         }
     };
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
+            <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[92vh] overflow-hidden">
                 {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-gray-200">
+                <div className="flex items-center justify-between px-4 py-3 sm:p-6 border-b border-primary-100 bg-primary-50/60">
                     <h2 className="text-2xl font-bold text-gray-900">Manage Profiles</h2>
                     <button
                         onClick={onClose}
@@ -58,7 +58,7 @@ const ProfileManager = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
+                <div className="px-4 py-4 sm:p-6 overflow-y-auto max-h-[calc(92vh-120px)]">
                     {/* Messages */}
                     {message && (
                         <div className={`mb-4 p-3 rounded-md ${

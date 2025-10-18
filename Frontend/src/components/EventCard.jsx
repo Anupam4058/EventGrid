@@ -12,19 +12,19 @@ const EventCard = ({ event, timezone, onEdit, onDelete, onViewDetails }) => {
         .join(', ');
 
     return (
-        <div className="bg-white border border-gray-200 rounded-lg p-4 hover:border-primary-300 hover:shadow-md transition-all">
+    <div className="bg-white border border-gray-200 rounded-lg p-4 hover:bg-primary-50/60 hover:border-primary-300 hover:shadow-md transition-colors">
             <div className="flex items-start justify-between mb-3">
-                <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1 break-words">
                         {event.title}
                     </h3>
                     {event.description && (
-                        <p className="text-sm text-gray-600 line-clamp-2">
+                        <p className="text-sm text-gray-600 line-clamp-2 break-words">
                             {event.description}
                         </p>
                     )}
                 </div>
-                <div className="flex gap-2 ml-4">
+                <div className="flex gap-2 ml-4 flex-shrink-0">
                     <button
                         onClick={() => onViewDetails(event)}
                         className="p-1.5 text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded transition-colors"
@@ -34,7 +34,7 @@ const EventCard = ({ event, timezone, onEdit, onDelete, onViewDetails }) => {
                     </button>
                     <button
                         onClick={() => onEdit(event)}
-                        className="p-1.5 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors"
+                        className="p-1.5 text-gray-600 hover:text-blue-600 hover:bg-blue-50  rounded transition-colors"
                         title="Edit Event"
                     >
                         <FiEdit size={18} />
@@ -51,11 +51,11 @@ const EventCard = ({ event, timezone, onEdit, onDelete, onViewDetails }) => {
 
             <div className="space-y-2">
                 <div className="flex items-center gap-2 text-sm text-gray-700">
-                    <FiCalendar size={16} className="text-gray-400" />
+                    <FiCalendar size={16} className="text-primary-500" />
                     <span>{startFormatted}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-700">
-                    <FiClock size={16} className="text-gray-400" />
+                    <FiClock size={16} className="text-primary-500" />
                     <span>
                         {startTime} - {endTime} {tzAbbr}
                     </span>
