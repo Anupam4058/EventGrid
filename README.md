@@ -217,11 +217,5 @@ npm run build
 npm run preview
 ```
 
-## License
-
-MIT
-
-## Author
-
 Built as a demonstration of multi-timezone event management with React and Express.js
 
