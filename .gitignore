@@ -1,6 +1,4 @@
-.env
 node_modules
-SETUP.md
-PROJECT_SUMMARY.md
-BACKEND_README.md
-DEPLOYMENT.md
+.env
+PROJECT_SUMMARY.md 
+BACKEND_README.md 
